@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.application.Platform;
 
 
-
 public class Main extends Application{
     public static void main(String[] args) {
         launch(args);

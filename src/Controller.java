@@ -1,5 +1,6 @@
 package src;
 
+
 import java.util.*;
 
 import java.io.File;
@@ -9,15 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.event.*;
-import javafx.stage.Stage;
-import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-
 
 
 public class Controller {
