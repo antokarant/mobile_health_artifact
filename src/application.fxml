@@ -59,11 +59,12 @@
       </Pane>
       <Pane layoutY="300.0" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #a1a8bf;">
          <children>
-            <TextField fx:id="previousAnswer" alignment="CENTER" editable="false" layoutX="205.0" layoutY="23.0" prefHeight="49.0" prefWidth="191.0" style="-fx-background-color: transparent;" styleClass="-fx" text="Start the game" />
+            <TextField fx:id="previousAnswer" alignment="CENTER" editable="false" layoutX="205.0" layoutY="23.0" prefHeight="49.0" prefWidth="191.0" style="-fx-background-color: transparent;" styleClass="-fx" />
             <TextField editable="false" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: transparent;" text="correct guesses" />
             <TextField editable="false" layoutX="18.0" layoutY="47.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent;" text="wrong guesses" />
             <TextField fx:id="wrongGuesses" editable="false" layoutX="129.0" layoutY="47.0" prefHeight="26.0" prefWidth="38.0" />
             <TextField fx:id="correctGuesses" editable="false" layoutX="129.0" layoutY="14.0" prefHeight="26.0" prefWidth="38.0" />
+            <TextField fx:id="startGameOver" alignment="CENTER" editable="false" layoutX="396.0" layoutY="26.0" prefHeight="49.0" prefWidth="191.0" style="-fx-background-color: transparent;" styleClass="-fx" text="Start the game!" />
          </children>
       </Pane>
       <Button mnemonicParsing="false" onAction="#startGame" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: transparent;" text="Start" textAlignment="CENTER" />

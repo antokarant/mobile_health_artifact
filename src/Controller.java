@@ -1,6 +1,5 @@
 package src;
 
-import java.util.List;
 import java.util.*;
 
 import java.io.File;
@@ -30,6 +29,8 @@ public class Controller {
     @FXML
     private TextField previousAnswer;
     @FXML
+    private TextField startGameOver;
+    @FXML
     private ImageView curPicture;
     @FXML
     private TextField wrongGuesses;
@@ -41,6 +42,10 @@ public class Controller {
     int wrongCount = 0;
     int ongoingGame = 0;
     int fakeorreal = -1;
+
+    List<String> realImages;
+    List<String> fakeImages;
+
     
     // 0->fake 1->real
 
@@ -92,30 +97,53 @@ public class Controller {
         this.correctGuesses.setText("0");
         this.wrongGuesses.setText("0");
         this.ongoingGame = 1;
+
+
+        File directoryPath = new File("../images/real");
+        this.realImages = new ArrayList<String>(Arrays.asList(directoryPath.list()));
+        directoryPath = new File("../images/fake");
+        this.fakeImages = new ArrayList<String>(Arrays.asList(directoryPath.list()));
+
+        this.startGameOver.setText("Game is underway!");
+        this.previousAnswer.clear();
+
+
         this.setImage();
     }
 
 
     private void setImage(){
-
         Random rand = new Random(); //instance of random class
         int choice = rand.nextInt(2); 
         if(choice == 0){ // fake image
-            File directoryPath = new File("../images/fake");
-            String contents[] = directoryPath.list();
-            int image = rand.nextInt(contents.length);
+            if(this.fakeImages.size()==0){
+                this.ongoingGame = 0;
+                this.fakeorreal = -1;
+                this.startGameOver.setText("The game is finished!");
+                this.curPicture.setImage(null);
+                return;
+            }
+            int image = rand.nextInt(this.fakeImages.size());
             // System.out.println("\"../images/fake/" + contents[image] + "\""); // gia na vlepoume to path
-            this.curPicture.setImage(new Image("../images/fake/" + contents[image] + ""));
+            this.curPicture.setImage(new Image("../images/fake/" + this.fakeImages.get(image) + ""));
             this.fakeorreal = 0;
+            this.fakeImages.remove(image);
 
         }
         else{ // real image
-            File directoryPath = new File("../images/real");
-            String contents[] = directoryPath.list();
-            int image = rand.nextInt(contents.length);
+            if(this.realImages.size()==0){
+                this.ongoingGame = 0;
+                this.fakeorreal = -1;
+                this.startGameOver.setText("The game is finished!");
+                this.curPicture.setImage(null);;
+                return;
+            }
+            int image = rand.nextInt(this.realImages.size());
             //System.out.println("\"../images/real/" + contents[image] + "\""); // gia na vlepoume to path
-            this.curPicture.setImage(new Image("../images/real/" + contents[image] + ""));
+            this.curPicture.setImage(new Image("../images/real/" + this.realImages.get(image) + ""));
             this.fakeorreal = 1;
+            this.realImages.remove(image);
+
         }
         
     }  
